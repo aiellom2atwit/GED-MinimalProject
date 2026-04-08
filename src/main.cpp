@@ -1,17 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <memory>
 
-#include <include/raylib.h>
+#include <raylib.h>
 #include <imgui/imgui.h>
 #include <imgui/rlImGui.h>
 #include <imgui/imgui_stdlib.h>
 
+#include "vec2.hpp"
+
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
+
 int main(void) 
 {
+    Vec2 pos;
+    Vec2 vel;
+    pos=5*vel;
+
+    std::cout<<Vec2::foo<<std::endl;
+
     // Initialization
     //--------------------------------------------------------------------------------------
     const int screenWidth = 900;
