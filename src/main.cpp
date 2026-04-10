@@ -4,9 +4,9 @@
 #include <memory>
 
 #include <raylib.h>
-#include <imgui/imgui.h>
-#include <imgui/rlImGui.h>
-#include <imgui/imgui_stdlib.h>
+#include <imgui.h>
+#include <rlImGui.h>
+#include <imgui_stdlib.h>
 
 #include "vec2.hpp"
 

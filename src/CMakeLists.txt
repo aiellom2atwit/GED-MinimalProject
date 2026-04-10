@@ -8,9 +8,6 @@ set(SOURCES
 # Add the executable target
 add_executable(Engine ${SOURCES})
 set_target_properties(Engine PROPERTIES OUTPUT_NAME prog.x)
-target_include_directories(Engine PRIVATE ${PROJECT_SOURCE_DIR}/external/raylib/src)
-target_include_directories(Engine PRIVATE ${PROJECT_SOURCE_DIR}/external/)
-
 
 
 target_link_libraries(Engine imgui)
