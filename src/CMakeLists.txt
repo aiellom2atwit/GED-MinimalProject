@@ -9,7 +9,7 @@ set(SOURCES
 add_executable(Engine ${SOURCES})
 set_target_properties(Engine PROPERTIES OUTPUT_NAME prog.x)
 
-
+#Add external libraries to link, using public includes defined in the library
 target_link_libraries(Engine imgui)
 target_link_libraries(Engine raylib)
 

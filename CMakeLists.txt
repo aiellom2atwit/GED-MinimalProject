@@ -11,13 +11,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED true)
 #
 # Dependencies
 #
+add_subdirectory(external/imgui)
+add_subdirectory(external/raylib)
 
-
+#
 # Projects
 #
 add_subdirectory(src)
-add_subdirectory(external/imgui)
-add_subdirectory(external/raylib)
+
 
 
 
