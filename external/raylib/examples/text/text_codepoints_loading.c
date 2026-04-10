@@ -2,14 +2,12 @@
 *
 *   raylib [text] example - Codepoints loading
 *
-*   Example complexity rating: [★★★☆] 3/4
-*
 *   Example originally created with raylib 4.2, last time updated with raylib 2.5
 *
 *   Example licensed under an unmodified zlib/libpng license, which is an OSI-certified,
 *   BSD-like license that allows static linking with closed source software
 *
-*   Copyright (c) 2022-2025 Ramon Santamaria (@raysan5)
+*   Copyright (c) 2022-2024 Ramon Santamaria (@raysan5)
 *
 ********************************************************************************************/
 
@@ -38,8 +36,7 @@ int main(void)
 
     InitWindow(screenWidth, screenHeight, "raylib [text] example - codepoints loading");
 
-    // Convert each utf-8 character into its
-    // corresponding codepoint in the font file.
+    // Get codepoints from text
     int codepointCount = 0;
     int *codepoints = LoadCodepoints(text, &codepointCount);
 
@@ -108,7 +105,7 @@ int main(void)
             }
             else
             {
-                // Draw provided text with loaded font, containing all required codepoint glyphs
+                // Draw provided text with laoded font, containing all required codepoint glyphs
                 DrawTextEx(font, text, (Vector2) { 160, 110 }, 48, 5, BLACK);
             }
 

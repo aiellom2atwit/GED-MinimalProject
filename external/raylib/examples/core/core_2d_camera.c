@@ -2,19 +2,16 @@
 *
 *   raylib [core] example - 2D Camera system
 *
-*   Example complexity rating: [★★☆☆] 2/4
-*
 *   Example originally created with raylib 1.5, last time updated with raylib 3.0
 *
 *   Example licensed under an unmodified zlib/libpng license, which is an OSI-certified,
 *   BSD-like license that allows static linking with closed source software
 *
-*   Copyright (c) 2016-2025 Ramon Santamaria (@raysan5)
+*   Copyright (c) 2016-2024 Ramon Santamaria (@raysan5)
 *
 ********************************************************************************************/
 
 #include "raylib.h"
-#include <math.h>
 
 #define MAX_BUILDINGS   100
 
@@ -45,11 +42,7 @@ int main(void)
 
         spacing += (int)buildings[i].width;
 
-        buildColors[i] = (Color){
-            (unsigned char)GetRandomValue(200, 240),
-            (unsigned char)GetRandomValue(200, 240),
-            (unsigned char)GetRandomValue(200, 250),
-            255};
+        buildColors[i] = (Color){ GetRandomValue(200, 240), GetRandomValue(200, 240), GetRandomValue(200, 250), 255 };
     }
 
     Camera2D camera = { 0 };
@@ -82,8 +75,7 @@ int main(void)
         else if (camera.rotation < -40) camera.rotation = -40;
 
         // Camera zoom controls
-        // Uses log scaling to provide consistent zoom speed
-        camera.zoom = expf(logf(camera.zoom) + ((float)GetMouseWheelMove()*0.1f));
+        camera.zoom += ((float)GetMouseWheelMove()*0.05f);
 
         if (camera.zoom > 3.0f) camera.zoom = 3.0f;
         else if (camera.zoom < 0.1f) camera.zoom = 0.1f;

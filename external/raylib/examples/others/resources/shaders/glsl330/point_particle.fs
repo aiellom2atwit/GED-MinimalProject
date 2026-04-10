@@ -6,7 +6,7 @@ uniform vec4 color;
 // Output fragment color
 out vec4 finalColor;
 
-// NOTE: Add your custom variables here
+// NOTE: Add here your custom variables
 
 void main()
 {

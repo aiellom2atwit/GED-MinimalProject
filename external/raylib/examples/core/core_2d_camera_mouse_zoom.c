@@ -2,16 +2,12 @@
 *
 *   raylib [core] example - 2d camera mouse zoom
 *
-*   Example complexity rating: [★★☆☆] 2/4
-*
 *   Example originally created with raylib 4.2, last time updated with raylib 4.2
-*
-*   Example contributed by Jeffery Myers (@JeffM2501) and reviewed by Ramon Santamaria (@raysan5)
 *
 *   Example licensed under an unmodified zlib/libpng license, which is an OSI-certified,
 *   BSD-like license that allows static linking with closed source software
 *
-*   Copyright (c) 2022-2025 Jeffery Myers (@JeffM2501)
+*   Copyright (c) 2022-2024 Jeffery Myers (@JeffM2501)
 *
 ********************************************************************************************/
 
@@ -73,9 +69,9 @@ int main ()
                 camera.target = mouseWorldPos;
 
                 // Zoom increment
-                // Uses log scaling to provide consistent zoom speed
-                float scale = 0.2f*wheel;
-                camera.zoom = Clamp(expf(logf(camera.zoom)+scale), 0.125f, 64.0f);
+                float scaleFactor = 1.0f + (0.25f*fabsf(wheel));
+                if (wheel < 0) scaleFactor = 1.0f/scaleFactor;
+                camera.zoom = Clamp(camera.zoom*scaleFactor, 0.125f, 64.0f);
             }
         }
         else
@@ -96,10 +92,10 @@ int main ()
             if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
             {
                 // Zoom increment
-                // Uses log scaling to provide consistent zoom speed
                 float deltaX = GetMouseDelta().x;
-                float scale = 0.005f*deltaX;
-                camera.zoom = Clamp(expf(logf(camera.zoom)+scale), 0.125f, 64.0f);
+                float scaleFactor = 1.0f + (0.01f*fabsf(deltaX));
+                if (deltaX < 0) scaleFactor = 1.0f/scaleFactor;
+                camera.zoom = Clamp(camera.zoom*scaleFactor, 0.125f, 64.0f);
             }
         }
         //----------------------------------------------------------------------------------

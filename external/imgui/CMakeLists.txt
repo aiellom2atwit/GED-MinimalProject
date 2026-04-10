@@ -8,8 +8,8 @@ set(IMGUISRC
     imgui_stdLib.cpp
     imgui.cpp)
 add_library(imgui STATIC ${IMGUISRC})
-#make imgui include directories public for the main project
 target_include_directories(imgui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(imgui PRIVATE ${PROJECT_SOURCE_DIR}/external/raylib/src)
 set_target_properties(imgui PROPERTIES OUTPUT_NAME imgui)
 set_target_properties(imgui PROPERTIES FOLDER "Dependencies")
+

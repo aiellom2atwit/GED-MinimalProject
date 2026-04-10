@@ -7,7 +7,7 @@ in vec4 fragColor;
 // Output fragment color
 out vec4 finalColor;
 
-// NOTE: Add your custom variables here
+// NOTE: Add here your custom variables
 
 #define MAX_SPOTS   3
 

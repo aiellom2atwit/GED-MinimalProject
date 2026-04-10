@@ -377,7 +377,7 @@
     <ClCompile Include="..\..\..\examples\textures\textures_svg_loading.c" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\..\..\examples\examples.rc" />
+    <ResourceCompile Include="..\..\..\src\raylib.rc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\raylib\raylib.vcxproj">

@@ -3,9 +3,9 @@
     <Defines count="57">
         <Define name="RAYLIB_H" type="GUARD" value="" desc="" />
         <Define name="RAYLIB_VERSION_MAJOR" type="INT" value="5" desc="" />
-        <Define name="RAYLIB_VERSION_MINOR" type="INT" value="6" desc="" />
+        <Define name="RAYLIB_VERSION_MINOR" type="INT" value="5" desc="" />
         <Define name="RAYLIB_VERSION_PATCH" type="INT" value="0" desc="" />
-        <Define name="RAYLIB_VERSION" type="STRING" value="5.6-dev" desc="" />
+        <Define name="RAYLIB_VERSION" type="STRING" value="5.5" desc="" />
         <Define name="__declspec(x)" type="MACRO" value="__attribute__((x))" desc="" />
         <Define name="RLAPI" type="UNKNOWN" value="__declspec(dllexport)" desc="We are building the library as a Win32 shared library (.dll)" />
         <Define name="PI" type="FLOAT" value="3.14159265358979323846" desc="" />
@@ -486,7 +486,7 @@
             <Value name="GAMEPAD_BUTTON_LEFT_THUMB" integer="16" desc="Gamepad joystick pressed button left" />
             <Value name="GAMEPAD_BUTTON_RIGHT_THUMB" integer="17" desc="Gamepad joystick pressed button right" />
         </Enum>
-        <Enum name="GamepadAxis" valueCount="6" desc="Gamepad axes">
+        <Enum name="GamepadAxis" valueCount="6" desc="Gamepad axis">
             <Value name="GAMEPAD_AXIS_LEFT_X" integer="0" desc="Gamepad left stick X axis" />
             <Value name="GAMEPAD_AXIS_LEFT_Y" integer="1" desc="Gamepad left stick Y axis" />
             <Value name="GAMEPAD_AXIS_RIGHT_X" integer="2" desc="Gamepad right stick X axis" />
@@ -507,7 +507,7 @@
             <Value name="MATERIAL_MAP_PREFILTER" integer="9" desc="Prefilter material (NOTE: Uses GL_TEXTURE_CUBE_MAP)" />
             <Value name="MATERIAL_MAP_BRDF" integer="10" desc="Brdf material" />
         </Enum>
-        <Enum name="ShaderLocationIndex" valueCount="30" desc="Shader location index">
+        <Enum name="ShaderLocationIndex" valueCount="29" desc="Shader location index">
             <Value name="SHADER_LOC_VERTEX_POSITION" integer="0" desc="Shader location: vertex attribute: position" />
             <Value name="SHADER_LOC_VERTEX_TEXCOORD01" integer="1" desc="Shader location: vertex attribute: texcoord01" />
             <Value name="SHADER_LOC_VERTEX_TEXCOORD02" integer="2" desc="Shader location: vertex attribute: texcoord02" />
@@ -537,9 +537,8 @@
             <Value name="SHADER_LOC_VERTEX_BONEIDS" integer="26" desc="Shader location: vertex attribute: boneIds" />
             <Value name="SHADER_LOC_VERTEX_BONEWEIGHTS" integer="27" desc="Shader location: vertex attribute: boneWeights" />
             <Value name="SHADER_LOC_BONE_MATRICES" integer="28" desc="Shader location: array of matrices uniform: boneMatrices" />
-            <Value name="SHADER_LOC_VERTEX_INSTANCE_TX" integer="29" desc="Shader location: vertex attribute: instanceTransform" />
         </Enum>
-        <Enum name="ShaderUniformDataType" valueCount="13" desc="Shader uniform data type">
+        <Enum name="ShaderUniformDataType" valueCount="9" desc="Shader uniform data type">
             <Value name="SHADER_UNIFORM_FLOAT" integer="0" desc="Shader uniform type: float" />
             <Value name="SHADER_UNIFORM_VEC2" integer="1" desc="Shader uniform type: vec2 (2 float)" />
             <Value name="SHADER_UNIFORM_VEC3" integer="2" desc="Shader uniform type: vec3 (3 float)" />
@@ -548,11 +547,7 @@
             <Value name="SHADER_UNIFORM_IVEC2" integer="5" desc="Shader uniform type: ivec2 (2 int)" />
             <Value name="SHADER_UNIFORM_IVEC3" integer="6" desc="Shader uniform type: ivec3 (3 int)" />
             <Value name="SHADER_UNIFORM_IVEC4" integer="7" desc="Shader uniform type: ivec4 (4 int)" />
-            <Value name="SHADER_UNIFORM_UINT" integer="8" desc="Shader uniform type: unsigned int" />
-            <Value name="SHADER_UNIFORM_UIVEC2" integer="9" desc="Shader uniform type: uivec2 (2 unsigned int)" />
-            <Value name="SHADER_UNIFORM_UIVEC3" integer="10" desc="Shader uniform type: uivec3 (3 unsigned int)" />
-            <Value name="SHADER_UNIFORM_UIVEC4" integer="11" desc="Shader uniform type: uivec4 (4 unsigned int)" />
-            <Value name="SHADER_UNIFORM_SAMPLER2D" integer="12" desc="Shader uniform type: sampler2d" />
+            <Value name="SHADER_UNIFORM_SAMPLER2D" integer="8" desc="Shader uniform type: sampler2d" />
         </Enum>
         <Enum name="ShaderAttributeDataType" valueCount="4" desc="Shader attribute data types">
             <Value name="SHADER_ATTRIB_FLOAT" integer="0" desc="Shader attribute type: float" />
@@ -672,14 +667,14 @@
         </Callback>
         <Callback name="SaveFileTextCallback" retType="bool" paramCount="2" desc="FileIO: Save text data">
             <Param type="const char *" name="fileName" desc="" />
-            <Param type="const char *" name="text" desc="" />
+            <Param type="char *" name="text" desc="" />
         </Callback>
         <Callback name="AudioCallback" retType="void" paramCount="2" desc="">
             <Param type="void *" name="bufferData" desc="" />
             <Param type="unsigned int" name="frames" desc="" />
         </Callback>
     </Callbacks>
-    <Functions count="584">
+    <Functions count="581">
         <Function name="InitWindow" retType="void" paramCount="3" desc="Initialize window and OpenGL context">
             <Param type="int" name="width" desc="" />
             <Param type="int" name="height" desc="" />
@@ -720,7 +715,7 @@
         </Function>
         <Function name="MinimizeWindow" retType="void" paramCount="0" desc="Set window state: minimized, if resizable">
         </Function>
-        <Function name="RestoreWindow" retType="void" paramCount="0" desc="Restore window from being minimized/maximized">
+        <Function name="RestoreWindow" retType="void" paramCount="0" desc="Set window state: not minimized/maximized">
         </Function>
         <Function name="SetWindowIcon" retType="void" paramCount="1" desc="Set icon for window (single image, RGBA 32bit)">
             <Param type="Image" name="image" desc="" />
@@ -906,7 +901,7 @@
             <Param type="int" name="locIndex" desc="" />
             <Param type="Matrix" name="mat" desc="" />
         </Function>
-        <Function name="SetShaderValueTexture" retType="void" paramCount="3" desc="Set shader uniform value and bind the texture (sampler2d)">
+        <Function name="SetShaderValueTexture" retType="void" paramCount="3" desc="Set shader uniform value for texture (sampler2d)">
             <Param type="Shader" name="shader" desc="" />
             <Param type="int" name="locIndex" desc="" />
             <Param type="Texture2D" name="texture" desc="" />
@@ -1046,7 +1041,7 @@
         </Function>
         <Function name="SaveFileText" retType="bool" paramCount="2" desc="Save text data to file (write), string must be '\0' terminated, returns true on success">
             <Param type="const char *" name="fileName" desc="" />
-            <Param type="const char *" name="text" desc="" />
+            <Param type="char *" name="text" desc="" />
         </Function>
         <Function name="FileExists" retType="bool" paramCount="1" desc="Check if file exists">
             <Param type="const char *" name="fileName" desc="" />
@@ -1123,13 +1118,13 @@
             <Param type="int" name="compDataSize" desc="" />
             <Param type="int *" name="dataSize" desc="" />
         </Function>
-        <Function name="EncodeDataBase64" retType="char *" paramCount="3" desc="Encode data to Base64 string (includes NULL terminator), memory must be MemFree()">
+        <Function name="EncodeDataBase64" retType="char *" paramCount="3" desc="Encode data to Base64 string, memory must be MemFree()">
             <Param type="const unsigned char *" name="data" desc="" />
             <Param type="int" name="dataSize" desc="" />
             <Param type="int *" name="outputSize" desc="" />
         </Function>
-        <Function name="DecodeDataBase64" retType="unsigned char *" paramCount="2" desc="Decode Base64 string (expected NULL terminated), memory must be MemFree()">
-            <Param type="const char *" name="text" desc="" />
+        <Function name="DecodeDataBase64" retType="unsigned char *" paramCount="2" desc="Decode Base64 string data, memory must be MemFree()">
+            <Param type="const unsigned char *" name="data" desc="" />
             <Param type="int *" name="outputSize" desc="" />
         </Function>
         <Function name="ComputeCRC32" retType="unsigned int" paramCount="2" desc="Compute CRC32 hash code">
@@ -1186,9 +1181,6 @@
         </Function>
         <Function name="GetCharPressed" retType="int" paramCount="0" desc="Get char pressed (unicode), call it multiple times for chars queued, returns 0 when the queue is empty">
         </Function>
-        <Function name="GetKeyName" retType="const char *" paramCount="1" desc="Get name of a QWERTY key on the current keyboard layout (eg returns string 'q' for KEY_A on an AZERTY keyboard)">
-            <Param type="int" name="key" desc="" />
-        </Function>
         <Function name="SetExitKey" retType="void" paramCount="1" desc="Set a custom key to exit program (default is ESC)">
             <Param type="int" name="key" desc="" />
         </Function>
@@ -1216,10 +1208,10 @@
         </Function>
         <Function name="GetGamepadButtonPressed" retType="int" paramCount="0" desc="Get the last gamepad button pressed">
         </Function>
-        <Function name="GetGamepadAxisCount" retType="int" paramCount="1" desc="Get axis count for a gamepad">
+        <Function name="GetGamepadAxisCount" retType="int" paramCount="1" desc="Get gamepad axis count for a gamepad">
             <Param type="int" name="gamepad" desc="" />
         </Function>
-        <Function name="GetGamepadAxisMovement" retType="float" paramCount="2" desc="Get movement value for a gamepad axis">
+        <Function name="GetGamepadAxisMovement" retType="float" paramCount="2" desc="Get axis movement value for a gamepad axis">
             <Param type="int" name="gamepad" desc="" />
             <Param type="int" name="axis" desc="" />
         </Function>
@@ -1409,21 +1401,9 @@
             <Param type="float" name="radiusV" desc="" />
             <Param type="Color" name="color" desc="" />
         </Function>
-        <Function name="DrawEllipseV" retType="void" paramCount="4" desc="Draw ellipse (Vector version)">
-            <Param type="Vector2" name="center" desc="" />
-            <Param type="float" name="radiusH" desc="" />
-            <Param type="float" name="radiusV" desc="" />
-            <Param type="Color" name="color" desc="" />
-        </Function>
         <Function name="DrawEllipseLines" retType="void" paramCount="5" desc="Draw ellipse outline">
             <Param type="int" name="centerX" desc="" />
             <Param type="int" name="centerY" desc="" />
-            <Param type="float" name="radiusH" desc="" />
-            <Param type="float" name="radiusV" desc="" />
-            <Param type="Color" name="color" desc="" />
-        </Function>
-        <Function name="DrawEllipseLinesV" retType="void" paramCount="4" desc="Draw ellipse outline (Vector version)">
-            <Param type="Vector2" name="center" desc="" />
             <Param type="float" name="radiusH" desc="" />
             <Param type="float" name="radiusV" desc="" />
             <Param type="Color" name="color" desc="" />
@@ -1488,8 +1468,8 @@
             <Param type="Rectangle" name="rec" desc="" />
             <Param type="Color" name="topLeft" desc="" />
             <Param type="Color" name="bottomLeft" desc="" />
-            <Param type="Color" name="bottomRight" desc="" />
             <Param type="Color" name="topRight" desc="" />
+            <Param type="Color" name="bottomRight" desc="" />
         </Function>
         <Function name="DrawRectangleLines" retType="void" paramCount="5" desc="Draw rectangle outline">
             <Param type="int" name="posX" desc="" />
@@ -2090,13 +2070,13 @@
         </Function>
         <Function name="ImageDrawTriangleFan" retType="void" paramCount="4" desc="Draw a triangle fan defined by points within an image (first vertex is the center)">
             <Param type="Image *" name="dst" desc="" />
-            <Param type="const Vector2 *" name="points" desc="" />
+            <Param type="Vector2 *" name="points" desc="" />
             <Param type="int" name="pointCount" desc="" />
             <Param type="Color" name="color" desc="" />
         </Function>
         <Function name="ImageDrawTriangleStrip" retType="void" paramCount="4" desc="Draw a triangle strip defined by points within an image">
             <Param type="Image *" name="dst" desc="" />
-            <Param type="const Vector2 *" name="points" desc="" />
+            <Param type="Vector2 *" name="points" desc="" />
             <Param type="int" name="pointCount" desc="" />
             <Param type="Color" name="color" desc="" />
         </Function>
@@ -2150,11 +2130,11 @@
         <Function name="UnloadRenderTexture" retType="void" paramCount="1" desc="Unload render texture from GPU memory (VRAM)">
             <Param type="RenderTexture2D" name="target" desc="" />
         </Function>
-        <Function name="UpdateTexture" retType="void" paramCount="2" desc="Update GPU texture with new data (pixels should be able to fill texture)">
+        <Function name="UpdateTexture" retType="void" paramCount="2" desc="Update GPU texture with new data">
             <Param type="Texture2D" name="texture" desc="" />
             <Param type="const void *" name="pixels" desc="" />
         </Function>
-        <Function name="UpdateTextureRec" retType="void" paramCount="3" desc="Update GPU texture rectangle with new data (pixels and rec should fit in texture)">
+        <Function name="UpdateTextureRec" retType="void" paramCount="3" desc="Update GPU texture rectangle with new data">
             <Param type="Texture2D" name="texture" desc="" />
             <Param type="Rectangle" name="rec" desc="" />
             <Param type="const void *" name="pixels" desc="" />
@@ -2465,12 +2445,12 @@
             <Param type="const char *" name="insert" desc="" />
             <Param type="int" name="position" desc="" />
         </Function>
-        <Function name="TextJoin" retType="char *" paramCount="3" desc="Join text strings with delimiter">
-            <Param type="char **" name="textList" desc="" />
+        <Function name="TextJoin" retType="const char *" paramCount="3" desc="Join text strings with delimiter">
+            <Param type="const char **" name="textList" desc="" />
             <Param type="int" name="count" desc="" />
             <Param type="const char *" name="delimiter" desc="" />
         </Function>
-        <Function name="TextSplit" retType="char **" paramCount="3" desc="Split text into multiple strings">
+        <Function name="TextSplit" retType="const char **" paramCount="3" desc="Split text into multiple strings">
             <Param type="const char *" name="text" desc="" />
             <Param type="char" name="delimiter" desc="" />
             <Param type="int *" name="count" desc="" />
@@ -2484,25 +2464,25 @@
             <Param type="const char *" name="text" desc="" />
             <Param type="const char *" name="find" desc="" />
         </Function>
-        <Function name="TextToUpper" retType="char *" paramCount="1" desc="Get upper case version of provided string">
+        <Function name="TextToUpper" retType="const char *" paramCount="1" desc="Get upper case version of provided string">
             <Param type="const char *" name="text" desc="" />
         </Function>
-        <Function name="TextToLower" retType="char *" paramCount="1" desc="Get lower case version of provided string">
+        <Function name="TextToLower" retType="const char *" paramCount="1" desc="Get lower case version of provided string">
             <Param type="const char *" name="text" desc="" />
         </Function>
-        <Function name="TextToPascal" retType="char *" paramCount="1" desc="Get Pascal case notation version of provided string">
+        <Function name="TextToPascal" retType="const char *" paramCount="1" desc="Get Pascal case notation version of provided string">
             <Param type="const char *" name="text" desc="" />
         </Function>
-        <Function name="TextToSnake" retType="char *" paramCount="1" desc="Get Snake case notation version of provided string">
+        <Function name="TextToSnake" retType="const char *" paramCount="1" desc="Get Snake case notation version of provided string">
             <Param type="const char *" name="text" desc="" />
         </Function>
-        <Function name="TextToCamel" retType="char *" paramCount="1" desc="Get Camel case notation version of provided string">
+        <Function name="TextToCamel" retType="const char *" paramCount="1" desc="Get Camel case notation version of provided string">
             <Param type="const char *" name="text" desc="" />
         </Function>
-        <Function name="TextToInteger" retType="int" paramCount="1" desc="Get integer value from text">
+        <Function name="TextToInteger" retType="int" paramCount="1" desc="Get integer value from text (negative values not supported)">
             <Param type="const char *" name="text" desc="" />
         </Function>
-        <Function name="TextToFloat" retType="float" paramCount="1" desc="Get float value from text">
+        <Function name="TextToFloat" retType="float" paramCount="1" desc="Get float value from text (negative values not supported)">
             <Param type="const char *" name="text" desc="" />
         </Function>
         <Function name="DrawLine3D" retType="void" paramCount="3" desc="Draw a line in 3D world space">
@@ -2940,7 +2920,7 @@
         <Function name="IsSoundValid" retType="bool" paramCount="1" desc="Checks if a sound is valid (data loaded and buffers initialized)">
             <Param type="Sound" name="sound" desc="" />
         </Function>
-        <Function name="UpdateSound" retType="void" paramCount="3" desc="Update sound buffer with new data (data and frame count should fit in sound)">
+        <Function name="UpdateSound" retType="void" paramCount="3" desc="Update sound buffer with new data">
             <Param type="Sound" name="sound" desc="" />
             <Param type="const void *" name="data" desc="" />
             <Param type="int" name="sampleCount" desc="" />
@@ -3116,7 +3096,7 @@
             <Param type="AudioStream" name="stream" desc="" />
             <Param type="AudioCallback" name="callback" desc="" />
         </Function>
-        <Function name="AttachAudioStreamProcessor" retType="void" paramCount="2" desc="Attach audio stream processor to stream, receives frames x 2 samples as 'float' (stereo)">
+        <Function name="AttachAudioStreamProcessor" retType="void" paramCount="2" desc="Attach audio stream processor to stream, receives the samples as 'float'">
             <Param type="AudioStream" name="stream" desc="" />
             <Param type="AudioCallback" name="processor" desc="" />
         </Function>
@@ -3124,7 +3104,7 @@
             <Param type="AudioStream" name="stream" desc="" />
             <Param type="AudioCallback" name="processor" desc="" />
         </Function>
-        <Function name="AttachAudioMixedProcessor" retType="void" paramCount="1" desc="Attach audio stream processor to the entire audio pipeline, receives frames x 2 samples as 'float' (stereo)">
+        <Function name="AttachAudioMixedProcessor" retType="void" paramCount="1" desc="Attach audio stream processor to the entire audio pipeline, receives the samples as 'float'">
             <Param type="AudioCallback" name="processor" desc="" />
         </Function>
         <Function name="DetachAudioMixedProcessor" retType="void" paramCount="1" desc="Detach audio stream processor from the entire audio pipeline">

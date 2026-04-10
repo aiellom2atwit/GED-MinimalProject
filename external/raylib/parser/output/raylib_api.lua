@@ -15,7 +15,7 @@ return {
     {
       name = "RAYLIB_VERSION_MINOR",
       type = "INT",
-      value = 6,
+      value = 5,
       description = ""
     },
     {
@@ -27,7 +27,7 @@ return {
     {
       name = "RAYLIB_VERSION",
       type = "STRING",
-      value = "5.6-dev",
+      value = "5.5",
       description = ""
     },
     {
@@ -2300,7 +2300,7 @@ return {
     },
     {
       name = "GamepadAxis",
-      description = "Gamepad axes",
+      description = "Gamepad axis",
       values = {
         {
           name = "GAMEPAD_AXIS_LEFT_X",
@@ -2543,11 +2543,6 @@ return {
           name = "SHADER_LOC_BONE_MATRICES",
           value = 28,
           description = "Shader location: array of matrices uniform: boneMatrices"
-        },
-        {
-          name = "SHADER_LOC_VERTEX_INSTANCE_TX",
-          value = 29,
-          description = "Shader location: vertex attribute: instanceTransform"
         }
       }
     },
@@ -2596,28 +2591,8 @@ return {
           description = "Shader uniform type: ivec4 (4 int)"
         },
         {
-          name = "SHADER_UNIFORM_UINT",
-          value = 8,
-          description = "Shader uniform type: unsigned int"
-        },
-        {
-          name = "SHADER_UNIFORM_UIVEC2",
-          value = 9,
-          description = "Shader uniform type: uivec2 (2 unsigned int)"
-        },
-        {
-          name = "SHADER_UNIFORM_UIVEC3",
-          value = 10,
-          description = "Shader uniform type: uivec3 (3 unsigned int)"
-        },
-        {
-          name = "SHADER_UNIFORM_UIVEC4",
-          value = 11,
-          description = "Shader uniform type: uivec4 (4 unsigned int)"
-        },
-        {
           name = "SHADER_UNIFORM_SAMPLER2D",
-          value = 12,
+          value = 8,
           description = "Shader uniform type: sampler2d"
         }
       }
@@ -3108,7 +3083,7 @@ return {
       returnType = "bool",
       params = {
         {type = "const char *", name = "fileName"},
-        {type = "const char *", name = "text"}
+        {type = "char *", name = "text"}
       }
     },
     {
@@ -3223,7 +3198,7 @@ return {
     },
     {
       name = "RestoreWindow",
-      description = "Restore window from being minimized/maximized",
+      description = "Set window state: not minimized/maximized",
       returnType = "void"
     },
     {
@@ -3674,7 +3649,7 @@ return {
     },
     {
       name = "SetShaderValueTexture",
-      description = "Set shader uniform value and bind the texture (sampler2d)",
+      description = "Set shader uniform value for texture (sampler2d)",
       returnType = "void",
       params = {
         {type = "Shader", name = "shader"},
@@ -4006,7 +3981,7 @@ return {
       returnType = "bool",
       params = {
         {type = "const char *", name = "fileName"},
-        {type = "const char *", name = "text"}
+        {type = "char *", name = "text"}
       }
     },
     {
@@ -4198,7 +4173,7 @@ return {
     },
     {
       name = "EncodeDataBase64",
-      description = "Encode data to Base64 string (includes NULL terminator), memory must be MemFree()",
+      description = "Encode data to Base64 string, memory must be MemFree()",
       returnType = "char *",
       params = {
         {type = "const unsigned char *", name = "data"},
@@ -4208,10 +4183,10 @@ return {
     },
     {
       name = "DecodeDataBase64",
-      description = "Decode Base64 string (expected NULL terminated), memory must be MemFree()",
+      description = "Decode Base64 string data, memory must be MemFree()",
       returnType = "unsigned char *",
       params = {
-        {type = "const char *", name = "text"},
+        {type = "const unsigned char *", name = "data"},
         {type = "int *", name = "outputSize"}
       }
     },
@@ -4352,14 +4327,6 @@ return {
       returnType = "int"
     },
     {
-      name = "GetKeyName",
-      description = "Get name of a QWERTY key on the current keyboard layout (eg returns string 'q' for KEY_A on an AZERTY keyboard)",
-      returnType = "const char *",
-      params = {
-        {type = "int", name = "key"}
-      }
-    },
-    {
       name = "SetExitKey",
       description = "Set a custom key to exit program (default is ESC)",
       returnType = "void",
@@ -4426,7 +4393,7 @@ return {
     },
     {
       name = "GetGamepadAxisCount",
-      description = "Get axis count for a gamepad",
+      description = "Get gamepad axis count for a gamepad",
       returnType = "int",
       params = {
         {type = "int", name = "gamepad"}
@@ -4434,7 +4401,7 @@ return {
     },
     {
       name = "GetGamepadAxisMovement",
-      description = "Get movement value for a gamepad axis",
+      description = "Get axis movement value for a gamepad axis",
       returnType = "float",
       params = {
         {type = "int", name = "gamepad"},
@@ -4839,34 +4806,12 @@ return {
       }
     },
     {
-      name = "DrawEllipseV",
-      description = "Draw ellipse (Vector version)",
-      returnType = "void",
-      params = {
-        {type = "Vector2", name = "center"},
-        {type = "float", name = "radiusH"},
-        {type = "float", name = "radiusV"},
-        {type = "Color", name = "color"}
-      }
-    },
-    {
       name = "DrawEllipseLines",
       description = "Draw ellipse outline",
       returnType = "void",
       params = {
         {type = "int", name = "centerX"},
         {type = "int", name = "centerY"},
-        {type = "float", name = "radiusH"},
-        {type = "float", name = "radiusV"},
-        {type = "Color", name = "color"}
-      }
-    },
-    {
-      name = "DrawEllipseLinesV",
-      description = "Draw ellipse outline (Vector version)",
-      returnType = "void",
-      params = {
-        {type = "Vector2", name = "center"},
         {type = "float", name = "radiusH"},
         {type = "float", name = "radiusV"},
         {type = "Color", name = "color"}
@@ -4976,8 +4921,8 @@ return {
         {type = "Rectangle", name = "rec"},
         {type = "Color", name = "topLeft"},
         {type = "Color", name = "bottomLeft"},
-        {type = "Color", name = "bottomRight"},
-        {type = "Color", name = "topRight"}
+        {type = "Color", name = "topRight"},
+        {type = "Color", name = "bottomRight"}
       }
     },
     {
@@ -6141,7 +6086,7 @@ return {
       returnType = "void",
       params = {
         {type = "Image *", name = "dst"},
-        {type = "const Vector2 *", name = "points"},
+        {type = "Vector2 *", name = "points"},
         {type = "int", name = "pointCount"},
         {type = "Color", name = "color"}
       }
@@ -6152,7 +6097,7 @@ return {
       returnType = "void",
       params = {
         {type = "Image *", name = "dst"},
-        {type = "const Vector2 *", name = "points"},
+        {type = "Vector2 *", name = "points"},
         {type = "int", name = "pointCount"},
         {type = "Color", name = "color"}
       }
@@ -6264,7 +6209,7 @@ return {
     },
     {
       name = "UpdateTexture",
-      description = "Update GPU texture with new data (pixels should be able to fill texture)",
+      description = "Update GPU texture with new data",
       returnType = "void",
       params = {
         {type = "Texture2D", name = "texture"},
@@ -6273,7 +6218,7 @@ return {
     },
     {
       name = "UpdateTextureRec",
-      description = "Update GPU texture rectangle with new data (pixels and rec should fit in texture)",
+      description = "Update GPU texture rectangle with new data",
       returnType = "void",
       params = {
         {type = "Texture2D", name = "texture"},
@@ -6913,9 +6858,9 @@ return {
     {
       name = "TextJoin",
       description = "Join text strings with delimiter",
-      returnType = "char *",
+      returnType = "const char *",
       params = {
-        {type = "char **", name = "textList"},
+        {type = "const char **", name = "textList"},
         {type = "int", name = "count"},
         {type = "const char *", name = "delimiter"}
       }
@@ -6923,7 +6868,7 @@ return {
     {
       name = "TextSplit",
       description = "Split text into multiple strings",
-      returnType = "char **",
+      returnType = "const char **",
       params = {
         {type = "const char *", name = "text"},
         {type = "char", name = "delimiter"},
@@ -6952,7 +6897,7 @@ return {
     {
       name = "TextToUpper",
       description = "Get upper case version of provided string",
-      returnType = "char *",
+      returnType = "const char *",
       params = {
         {type = "const char *", name = "text"}
       }
@@ -6960,7 +6905,7 @@ return {
     {
       name = "TextToLower",
       description = "Get lower case version of provided string",
-      returnType = "char *",
+      returnType = "const char *",
       params = {
         {type = "const char *", name = "text"}
       }
@@ -6968,7 +6913,7 @@ return {
     {
       name = "TextToPascal",
       description = "Get Pascal case notation version of provided string",
-      returnType = "char *",
+      returnType = "const char *",
       params = {
         {type = "const char *", name = "text"}
       }
@@ -6976,7 +6921,7 @@ return {
     {
       name = "TextToSnake",
       description = "Get Snake case notation version of provided string",
-      returnType = "char *",
+      returnType = "const char *",
       params = {
         {type = "const char *", name = "text"}
       }
@@ -6984,14 +6929,14 @@ return {
     {
       name = "TextToCamel",
       description = "Get Camel case notation version of provided string",
-      returnType = "char *",
+      returnType = "const char *",
       params = {
         {type = "const char *", name = "text"}
       }
     },
     {
       name = "TextToInteger",
-      description = "Get integer value from text",
+      description = "Get integer value from text (negative values not supported)",
       returnType = "int",
       params = {
         {type = "const char *", name = "text"}
@@ -6999,7 +6944,7 @@ return {
     },
     {
       name = "TextToFloat",
-      description = "Get float value from text",
+      description = "Get float value from text (negative values not supported)",
       returnType = "float",
       params = {
         {type = "const char *", name = "text"}
@@ -7872,7 +7817,7 @@ return {
     },
     {
       name = "UpdateSound",
-      description = "Update sound buffer with new data (data and frame count should fit in sound)",
+      description = "Update sound buffer with new data",
       returnType = "void",
       params = {
         {type = "Sound", name = "sound"},
@@ -8298,7 +8243,7 @@ return {
     },
     {
       name = "AttachAudioStreamProcessor",
-      description = "Attach audio stream processor to stream, receives frames x 2 samples as 'float' (stereo)",
+      description = "Attach audio stream processor to stream, receives the samples as 'float'",
       returnType = "void",
       params = {
         {type = "AudioStream", name = "stream"},
@@ -8316,7 +8261,7 @@ return {
     },
     {
       name = "AttachAudioMixedProcessor",
-      description = "Attach audio stream processor to the entire audio pipeline, receives frames x 2 samples as 'float' (stereo)",
+      description = "Attach audio stream processor to the entire audio pipeline, receives the samples as 'float'",
       returnType = "void",
       params = {
         {type = "AudioCallback", name = "processor"}
