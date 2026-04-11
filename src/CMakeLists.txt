@@ -6,12 +6,12 @@ set(SOURCES
 )
 
 # Add the executable target
-add_executable(Engine ${SOURCES})
-set_target_properties(Engine PROPERTIES OUTPUT_NAME prog.x)
+add_executable(Minimal ${SOURCES})
+set_target_properties(Minimal PROPERTIES OUTPUT_NAME prog.x)
 
 #Add external libraries to link, using public includes defined in the library
-target_link_libraries(Engine imgui)
-target_link_libraries(Engine raylib)
+target_link_libraries(Minimal imgui)
+target_link_libraries(Minimal raylib)
 
 # Checks if OSX and links appropriate frameworks (only required on MacOS)
 if (APPLE)
