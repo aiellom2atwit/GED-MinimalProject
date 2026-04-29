@@ -29,6 +29,7 @@
 *.out
 *.app
 *.x
+*.x.exe
 
 #C
 # Prerequisites
