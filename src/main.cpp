@@ -16,12 +16,6 @@
 
 int main(void) 
 {
-    Vec2 pos;
-    Vec2 vel;
-    pos=5*vel;
-
-    std::cout<<Vec2::foo<<std::endl;
-
     // Initialization
     //--------------------------------------------------------------------------------------
     const int screenWidth = 900;

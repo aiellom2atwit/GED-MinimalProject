@@ -21,7 +21,6 @@ Vec2 Vec2::operator* (const float s) const{
   }
 
 Vec2 operator* (const float s, const Vec2& rhs){
-    Vec2::foo++;
     return Vec2(rhs.x*s, rhs.y*s);
 }
 

@@ -6,7 +6,6 @@ class Vec2{
     public:
         float x;
         float y;
-        inline static int foo;
 
         Vec2();
         Vec2(float x, float y);
