@@ -1,21 +1,27 @@
 #pragma once
-#include <math.h>
-#include <iostream>
 
+/**
+ * Contains two float values that can be used as a vector
+ */
 class Vec2{
     public:
-        float x;
-        float y;
+        float x; /* x value in vector */
+        float y; /* y value in vector */
 
         Vec2();
         Vec2(float x, float y);
 
-        float length();
+        float length() const;
+        float dist(const Vec2& v) const;
+        Vec2 normalize() const;
 
-        Vec2 operator+ (const Vec2& rhs) const;
-        void operator+= (const Vec2& rhs);
-        Vec2 operator* (const float s) const;
+        bool operator ==(const Vec2& rhs) const;
+        Vec2 operator + (const Vec2& rhs) const;
+        Vec2 operator * (float value) const;
+        Vec2 operator -(const Vec2& rhs) const;
+        float operator *(const Vec2& rhs) const;
+        void operator +=(const Vec2& rhs);
+        void operator -=(const Vec2& rhs);
+        void operator *=(const Vec2& rhs);
+        static const Vec2 zero;
 };
-
-Vec2 operator* (const float s, const Vec2& rhs);
-std::ostream& operator<< (std::ostream& os, const Vec2& v);

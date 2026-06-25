@@ -1,0 +1,6 @@
+Font dosvga ./assets/fonts/Perfect DOS VGA 437.ttf
+Texture MEGASTAND ./assets/textures/megaStand.png
+Animation MEGASTAND MEGASTAND 1 1 3
+Song TitleTheme ./assets/sfx/music/MainTheme.wav
+Texture TitleHouseBG ./assets/TitleHouse.png
+Animation TitleHouseBG TitleHouseBG 4 8 1

@@ -1,0 +1,3 @@
+WINDOW FaithRemake 1280 800
+WORLD 96 12
+ASSETS ./assets.txt
